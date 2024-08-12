@@ -1,0 +1,77 @@
+
+.notebooks:hover{
+    background-color: rgb(255, 255, 255);
+    color: black;
+}
+
+img{
+    margin-right: 15px;
+}
+
+.notebooks{
+    display: flex;
+    align-items: center;
+    padding: 5px 15px;
+}
+
+.notebooks-container{
+    max-height: 470px;
+    overflow-y: auto;
+    /* -ms-overflow-style: none;  
+    scrollbar-width: none;   */
+}
+
+img{
+    width: 28px;
+}
+
+.add-new:hover{
+    background-color: rgb(255, 255, 255);
+}
+
+.add-new{
+    display: flex;
+    align-items: center;
+    padding: 5px 15px;
+}
+
+.add-new img{
+    width: 20px;
+}
+
+.wrapper{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.clicked-list {
+    position: fixed;
+    background-color: white;
+    border-radius: 4px;
+    padding: 10px;
+    box-shadow: 3px 3px 3px rgb(166, 166, 166);
+}
+
+.clicked-list ul{
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    width: 100px;
+}
+
+.clicked-list li:hover{
+    background-color: rgb(240, 240, 240);
+}
+
+.clicked-list li{
+    padding: 3px;
+}
+
+.active-notebook {
+    background-color: rgb(212, 212, 212);
+    color: black;
+    font-weight: bold;
+}
+

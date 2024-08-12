@@ -1,0 +1,45 @@
+<div class="container-trui content" (click)="hideList()">
+    <div class="tool-bar">
+        <div class="search-wrapper"><input type="text" placeholder="Search bin" class="search" [(ngModel)]="binSearchContent" (input)="filterBy()"/></div>
+
+        <div class="sort-wrapper">
+            <select class="sortOptions" (change)="handleSortChange($event)">
+                <option value="none">None</option>
+                <option value="dateDeleted">By Date Deleted</option>
+                <option value="alphabetically">Alphabetically</option>
+            </select>            
+        </div>
+    </div>
+    
+    <div class="header-container">
+        <h1 class="centered-header"><u>Deleted stuff</u></h1>
+        <button class="btn btn-danger" (click)="emptyBin()">Empty bin</button>
+    </div>
+
+    <div class="notebooks-container" *ngIf="deletedStuff.length > 0">
+        <ng-container *ngFor="let stuff of deletedStuff; index as i">
+            <div class="notebook-item" (click)="hideList()" (contextmenu)="setSelectedNoteBookIndex(i); showList($event)">
+                <img src="{{stuff.img}}" alt="notebook image" class="notebookImage"/><br/> 
+                <span>{{stuff.title | notebookTitle:20}}</span><br/>
+                <i>Deleted on the {{stuff.time | date:'short'}}</i>
+            </div>
+        </ng-container>
+    </div>
+
+    <div class="empty" *ngIf="deletedStuff.length == 0">
+        <div class="empty-child">
+            <img src="../../assets/images/empty-bin.png"/>
+            <div>
+                <h1 class="empty-message">The trash is currently empty</h1>
+                <h4>Deleted stuff comes in here</h4>
+            </div>
+        </div>
+    </div>
+    
+    <div *ngIf="showListFlag && selectedNoteBookIndex !== -1" [style.left.px]="listPositionX" [style.top.px]="listPositionY" class="clicked-list">
+        <ul>
+            <li (click)="restoreNoteOrNotebook(selectedNoteBookIndex); hideList()">Restore</li>
+            <li (click)="deleteNoteOrNotebook(selectedNoteBookIndex); hideList()">Delete</li>
+        </ul>
+    </div>
+</div>

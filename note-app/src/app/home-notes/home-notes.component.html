@@ -1,0 +1,15 @@
+<div class="notes-container" (click)="hideList()">
+    <div class="notes" *ngFor="let note of notes; index as i">
+        <a [routerLink]="'/'" class="nav-link" routerLinkActive="active" [ngClass]="{ 'active-note': i === selectedNoteIndex }" (click)="displayNoteText(i); setSelectedNoteIndex(i); hideList()" (contextmenu)="setSelectedNoteIndex(i); showList($event)">
+            <div class="note">
+                <span class="note-title">{{note.title | noteTitle}}</span>
+            </div>
+        </a>
+    </div>
+
+    <div *ngIf="showListFlag && selectedNoteIndex !== -1" [style.left.px]="listPositionX" [style.top.px]="listPositionY" class="clicked-list">
+        <ul>
+            <li (click)="deleteNoteReq(selectedNoteIndex)">Delete</li>
+        </ul>
+    </div>
+</div>

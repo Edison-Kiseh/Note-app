@@ -1,0 +1,17 @@
+.navbar{
+    height: 45px;
+    font-size: 16px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.container-trui{
+    border-top: 1px solid black;
+    border-right: 1px solid black;
+    border-left: 1px solid black;
+}
+
+img{
+    width: 44px;
+    margin-right: 10px;
+}

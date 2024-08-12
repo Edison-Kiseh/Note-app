@@ -1,0 +1,23 @@
+.message{
+    text-align: center;
+    margin: auto;
+    background-color: rgb(232, 232, 232);
+    border-radius: 10px;
+    width: 40%;
+    padding: 40px 0px;
+}
+
+.container-trui{
+    border-top: 1px solid black;
+    padding-top: 60px;
+}
+
+h1{
+    font-size: 100px;
+    text-align: center;
+}
+
+img{
+    width: 200px;
+    margin-bottom: 20px;
+}

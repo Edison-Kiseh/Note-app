@@ -1,0 +1,51 @@
+<div class="content container-trui" (click)="hideList()">
+    <div class="tool-bar">
+        <div class="search-wrapper"><input type="text" placeholder="Search notebooks" class="search" [(ngModel)]="notebookSearchContent" (input)="filterBy()"/></div>
+
+        <div class="sort-wrapper">
+            <select class="sortOptions" (change)="handleSortChange($event)">
+                <option value="none">None</option>
+                <option value="dateCreated">By Date Created</option>
+                <option value="alphabetically">Alphabetically</option>
+                <option value="numberNotes">Highest notes</option>
+            </select>            
+        </div>
+    </div>
+
+    <div class="header-container">
+        <h1 class="centered-header"><u>All notebooks</u></h1>
+        <button class="btn btn-primary" (click)="addNewNoteBook()">Add notebook</button>
+    </div>
+
+    <div class="notebooks-container" *ngIf="notebooks.length > 0">
+        <ng-container *ngFor="let notebook of notebooks; index as i">
+            <div class="notebook-item" (contextmenu)="setSelectedNoteBookIndex(i); showList($event)">
+                <a href="#" [attr.href]="'/?id=' + notebook.id">
+                    <img src="{{notebook.img}}" alt="notebook image" class="notebookImage"/>
+                </a><br/>
+                <span *ngIf="!editing[i]" (dblclick)="toggleEdit(i)"><b>{{notebook.name | notebookTitle:20}}</b></span>
+                <input *ngIf="editing[i]" type="text" [(ngModel)]="notebooks[i].name" (blur)="toggleEdit(i)" (keyup.enter)="toggleEdit(i)"/>
+                <br/><span><i>Number of notes: {{notebook.notecount}}</i></span>
+            </div>
+        </ng-container>
+    </div>
+
+    <div class="empty" *ngIf="notebooks.length == 0">
+        <div class="empty-child">
+            <img src="../../assets/images/library.png"/>
+            <div>
+                <h1 class="empty-message">Your notebooks are displayed here</h1>
+                <h4>No notebooks to display</h4>
+            </div>
+        </div>
+    </div>
+
+    <div *ngIf="showListFlag && selectedNoteBookIndex !== -1" [style.left.px]="listPositionX" [style.top.px]="listPositionY" class="clicked-list">
+        <ul>
+            <li (click)="toggleEdit(selectedNoteBookIndex); hideList()">Rename</li>
+            <li (click)="moveNoteBookToRecycleBin(selectedNoteBookIndex); hideList()">Delete</li>
+        </ul>
+    </div>
+</div>
+
+<!-- (click)="hideList()" (contextmenu)="setSelectedNoteBookIndex(i); showList($event)" -->

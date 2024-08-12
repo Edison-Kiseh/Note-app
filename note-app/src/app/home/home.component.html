@@ -1,0 +1,68 @@
+<div class="container-trui content" (click)="hideList()">
+    <div class="col-2 left-side">
+        <div class="left-top">
+            <div class="icon-text" (click)="getAllNotes(); allNotesActive()" [ngClass]="{ 'isActive': allNotesactive }"><img src="../../assets/images/allnotes.png" alt="all notes"/> <span>All notes</span></div>
+            <a [routerLink]="'/bin'"><div class="icon-text"><img src="../../assets/images/bin.png" alt="bin"/> <span>Trash</span></div></a>
+        </div>
+        <div class="left-bottom">
+            <app-home-notebooks 
+            [notebooksForChild]="notebooks"
+            [activateNotebook]="notebookActivate()"
+            (addNoteBookEvent)="addNewNoteBook()"
+            (notesTitleChangeEvent)="showNoteBookNotes($event)"
+            (changedNoteBookNameEvent)="updateNBName($event)"
+            (deleteNoteBookEvent)="moveNoteBookToRecycleBin($event)"
+            ></app-home-notebooks>
+        </div>
+    </div>
+    <div class="col-3 middle">
+        <div class="middle-top">
+            <h4><u>{{notesParentName | noteparentTitle}}</u></h4>
+            <div class="newNote-sort">
+                <a [routerLink]="'/'" (click)="addNote()"><button class="btn btn-secondary">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
+                        <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4"/>
+                    </svg>New note</button></a>
+                <img src="../../assets/images/sort.png" alt="sort" class="sort" (click)="showList($event)"/>
+                <div *ngIf="showListFlag" [style.left.px]="listPositionX" [style.top.px]="listPositionY" class="clicked-list">
+                    <ul class="contextmenu">
+                        <li (click)="getNotes(); hideList()">None</li>
+                        <li (click)="sortNotesAlphabetically(); hideList()">Alphabetically</li>
+                        <li (click)="sortNotesByDateCreated(); hideList()">By date</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="search-box">
+                <!-- <img src="../../assets/images/search-icon.png" alt="Search" class="search-icon"/> -->
+                <input type="text" placeholder="Search" class="search" [(ngModel)]="notesSearchContent" (input)="filterBy()"/>
+            </div>
+        </div>
+        
+        <app-home-notes
+        [notesForChild]="notes"
+        (displayNoteEvent)="displayNoteText($event)"
+        (delNoteEvent)="moveNoteToRecycleBin($event)"
+        (changedNotesNameEvent)="editNoteTitle()"
+        >
+        </app-home-notes>
+        <!--         -->
+        
+    </div>
+    <div class="col-8 right-side">
+        <div class="header">
+            <div *ngIf="!isEditing">
+                <h3><input type="text" (click)="editNoteTitle()" value="{{newNoteForEditing.title}}"></h3>
+              </div>
+              
+            <div *ngIf="isEditing">
+                <h3><input type="text" [(ngModel)]="newNoteForEditing.title" (blur)="saveNoteTitle()" autofocus></h3>
+            </div>
+
+            <span>{{newNoteForEditing.time | date:'medium'}}</span>
+        </div>
+        <div id="editor"></div>
+    </div>
+</div>
+
+

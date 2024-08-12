@@ -1,0 +1,30 @@
+{
+  "notebooks": [
+    {
+      "id": "1650",
+      "name": "My notebook",
+      "img": "../../assets/images/notebook.jpg",
+      "time": "2024-05-25T20:12:06.915Z",
+      "notecount": 0
+    }
+  ],
+  "notes": [
+    {
+      "id": "9500",
+      "notebookId": "",
+      "title": "Read me first!",
+      "text": "<p>\tPlease visit the below link to find out some cool thing that I found out about angular which really helped me with this project.</p><p>\t<a href=\"https://youtu.be/dQw4w9WgXcQ\" rel=\"noopener noreferrer\" target=\"_blank\">https://youtu.be/dQw4w9WgXcQ</a></p>",
+      "time": "2024-05-26T17:15:18.289Z",
+      "img": "src/assets/images/allnotes.png"
+    },
+    {
+      "id": "6977",
+      "notebookId": "1650",
+      "title": "Final remarks",
+      "text": "<h1>\t\t\t\t\t\t\t\t\t\t\t\t\t\t<u>Final remarks</u></h1><p><br></p><p>\tTesting the functionality of the note application, to see if fully functional. Yeah, it's not too professional but it'll do. <em>Man! why do I feel like this course is worth 6 credits instead of 3?</em> Maybe it's just always my tendency to make things unnecessary harder than they ought to be. Anyways...I'm glad its now over.</p><p><br></p><p><strong class=\"ql-size-large\">Please be nice with the grading :)</strong></p>",
+      "time": "2024-05-26T17:15:42.753Z",
+      "img": "src/assets/images/allnotes.png"
+    }
+  ],
+  "deletedNotes": []
+}
