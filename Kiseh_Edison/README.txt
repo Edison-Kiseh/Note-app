@@ -1,0 +1,1 @@
+The node modules directory of this application has been deleted, to re-install it, run the command "npm install" and it will automatically re-install everything for you
