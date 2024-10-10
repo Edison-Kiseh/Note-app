@@ -1,3 +1,3 @@
 # Note-app
 
-Ohh I loved making this one as well. It is a note web application that i made using angular. It is similar to the OneNote app.
+Ohh I loved making this one as well. It is a note web application that i made using angular. It is similar to the OneNote app. During my second semester in the second year, all I had to do was to create the gui and a local json db but now in my third year I gotta add a bunch of stuff like authentication, use a firebase db etc...
